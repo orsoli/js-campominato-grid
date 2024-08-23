@@ -37,6 +37,6 @@ formElement.addEventListener('submit', function(e){
         const cellElement = createElement('div')// Create div element
         addClass(cellElement,"cell") // Add class='cell' in this div element already created
         gridElement.appendChild(cellElement) // Append like child new div in the grid element in DOM
-        cellElement
+        cellElement.innerText = [i + 1] // Add content in the element cell
     }
 })

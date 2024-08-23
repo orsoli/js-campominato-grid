@@ -13,10 +13,23 @@ main{
 /* Utils  */
 .container {
     width: 70vw;
+    margin: 0 auto;
+}
+
+
+/* Grid  */
+.grid{
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .cell{
-    width: 60px;
-    height: 60px;
+    width: calc(100%/10);
+    height: calc(100%/10);
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
