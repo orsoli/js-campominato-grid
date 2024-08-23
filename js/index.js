@@ -42,28 +42,23 @@ const getSelected = (elementName) => elementName.value // Create a function to c
 const formElement = document.getElementById('play-form')
 const gridElement = document.getElementById('grid')
 const selectedElement = document.getElementById('level')
-// Create variables already have
-let row; // Number of rows 
-let col; // numbers of colomn
-
-// Check the option and change variable
-if(getSelected(selectedElement) === 'normal'){
-    row = 9;
-    col = 9;
-}else if(getSelected(selectedElement) === 'hard'){
-    row = 10;
-    col = 10;
-}else if(getSelected(selectedElement) === 'easy'){
-    row = 7;
-    col = 7;
-}
-
-const gridSize = row * col // The size of grid in total number
 
 // --- Procesing Phase
 // Create an event listener in for element
 formElement.addEventListener('submit', function(e){
     e.preventDefault() // Blocked the default behavor of form submit
+    // Check the option and change variable
+    if(getSelected(selectedElement) === 'normal'){
+        row = 9;
+        col = 9;
+    }else if(getSelected(selectedElement) === 'hard'){
+        row = 10;
+        col = 10;
+    }else if(getSelected(selectedElement) === 'easy'){
+        row = 7;
+        col = 7;
+    }
+    const gridSize = row * col // The size of grid in total number
 
     // Use a for loop to create 100 times a cell element and insert in DOM like gridElement child
     for(let i = 0; i < gridSize; i++){
