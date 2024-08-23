@@ -8,9 +8,20 @@
 
 /* Structure
     M1 - Preapare the HTML and CSS we see in img.
+
     M2 - Retrieave the interested element from DOM in js 
        - Create an event when click
        - Create a loop to create 100 time an element and inseet in DOM in 10 rows and 10 col
+
+    M3 - In each cell, the corresponding number should appear, in order from 1 to 100.
+       - innerText [i + 1]
+
+    M4 - When a cell is clicked, the number of the clicked cell is printed in the console
+    and then the cell is colored blue.
+        - Add an click event for cell element inside loop in form event 
+        - In click event print in concole innerText of cell element
+        - In click event call back addClass function to add the bg-blue class alreaded created in CSS
+
 */
 
 // ---  Preparation Phase
@@ -38,5 +49,13 @@ formElement.addEventListener('submit', function(e){
         addClass(cellElement,"cell") // Add class='cell' in this div element already created
         gridElement.appendChild(cellElement) // Append like child new div in the grid element in DOM
         cellElement.innerText = [i + 1] // Add content in the element cell
+        // Add a click event of cell element
+        cellElement.addEventListener('click',function(){
+            // Print in console the inner text of cell element
+            console.log(cellElement.innerText)
+            // Add bg-blue class
+            addClass(cellElement,"bg-blue")
+        })
+
     }
 })
