@@ -1,0 +1,22 @@
+/* Reset  */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Generics  */
+main{
+    background-color: #7FFFD4;
+}
+
+/* Utils  */
+.container {
+    width: 70vw;
+}
+
+.cell{
+    width: 60px;
+    height: 60px;
+    border: 1px solid black;
+}
