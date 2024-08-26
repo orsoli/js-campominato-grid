@@ -33,46 +33,76 @@
 
 // ---  Preparation Phase
 // Define  functions 
-// Function to create a elements expect 1 paramenter  type 
+/**
+ * 
+ * @param {string} type 
+ * @returns {string}
+ */
 const createElement = type => document.createElement(type) // Create new element
+
+
+/**
+ * 
+ * @param {*} element 
+ * @param {*} nameClass 
+ * @returns 
+ */
 const addClass = (element, nameClass) => element.classList.add(nameClass) // Add class funtion expect 2 param element and nameclass
-const getSelected = (elementName) => elementName.value // Create a function to chek selected option
+
+/**
+ * 
+ * @param {*} elementName 
+ * @returns {string}  // Return a string
+ */
+const getSelected = elementName => elementName.value // Create a function to chek selected option
 
 // Retrieve interested element from DOM
 const formElement = document.getElementById('play-form')
 const gridElement = document.getElementById('grid')
 const selectedElement = document.getElementById('level')
+const btnElement = document.getElementById('play-btn')
 
 // --- Procesing Phase
 // Create an event listener in for element
 formElement.addEventListener('submit', function(e){
     e.preventDefault() // Blocked the default behavor of form submit
     // Check the option and change variable
-    if(getSelected(selectedElement) === 'normal'){
-        row = 9;
-        col = 9;
-    }else if(getSelected(selectedElement) === 'hard'){
-        row = 10;
-        col = 10;
-    }else if(getSelected(selectedElement) === 'easy'){
-        row = 7;
-        col = 7;
+    switch(getSelected(selectedElement)){
+        case 'normal':
+            row = 9
+            col = 9
+            break;
+        case 'hard':
+            row = 7
+            col = 7
+            break;
+        case 'easy':
+            row = 10
+            col = 10
+            break;
     }
+
     const gridSize = row * col // The size of grid in total number
 
     // Use a for loop to create 100 times a cell element and insert in DOM like gridElement child
-    for(let i = 0; i < gridSize; i++){
+    for(let i = 1; i <= gridSize; i++){
         const cellElement = createElement('div')// Create div element
         // Check selected option to add a class
-        if(getSelected(selectedElement) === 'normal'){
-            addClass(cellElement,"normal-cell") // Add class='normal-cell' in this div element already created
-        }else if(getSelected(selectedElement) === 'hard'){
-            addClass(cellElement,"hard-cell") // Add class='hard-cell' in this div element already created
-        }else if(getSelected(selectedElement) === 'easy'){
-            addClass(cellElement,"easy-cell") // Add class='easy-cell' in this div element already created
+        switch(getSelected(selectedElement)){
+            case 'normal':
+                addClass(cellElement,"normal-cell") // Add class='normal-cell' in this div element already created
+                break;
+            case 'hard':
+                addClass(cellElement,"hard-cell") // Add class='hard-cell' in this div element already created
+                break;
+            case 'easy':
+                addClass(cellElement,"easy-cell") // Add class='easy-cell' in this div element already created
+                break;
         }
         gridElement.appendChild(cellElement) // Append like child new div in the grid element in DOM
-        cellElement.innerText = [i + 1] // Add content in the element cell
+        cellElement.innerText = i // Add content in the element cell
+        btnElement.disabled = true
+
         // Add a click event of cell element
         cellElement.addEventListener('click',function(){
             // Print in console the inner text of cell element
